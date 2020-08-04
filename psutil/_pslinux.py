@@ -493,17 +493,17 @@ def virtual_memory():
 
 
 def swap_memory():
-    globle Xxx
-    globle Yyy
+    globle total
+    globle free
     """Return swap memory metrics."""
     #mems = {}
     with open_binary('%s/meminfo' % get_procfs_path()) as f:
         print ("HELLO WITH")
         for line in f:
             if line.lower().startswith(b'SwapTotal'):
-                    _, Xxx = line.split(b':', 1)
+                    _, total = line.split(b':', 1)
             if line.lower().startswith(b'SwapFree'):
-                    _, Yyy = line.split(b':', 1)
+                    _, free = line.split(b':', 1)
             #print ("HELLO FOR")
             #fields = line.split()
             #mems[fields[0]] = int(fields[1]) * 1024
@@ -520,8 +520,6 @@ def swap_memory():
         #_, _, _, _, total, free, unit_multiplier = cext.linux_sysinfo()
         #total *= unit_multiplier
         #free *= unit_multiplier
-    total = Xxx
-    free = Yyy
     print ("\n PSLINUX TOTAL====", total)
     print ("\n PSLINUX FREE====", free)
     used = total - free
