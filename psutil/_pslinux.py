@@ -494,14 +494,14 @@ def virtual_memory():
 
 def swap_memory():
     """Return swap memory metrics."""
-    mems = []
+    #mems = {}
     with open_binary('%s/meminfo' % get_procfs_path()) as f:
         print ("HELLO WITH")
         for line in f:
             if line.lower().startswith(b'SwapTotal'):
-                    _, tot = line.split(b':', 1)
+                    _, xxx = line.split(b':', 1)
             if line.lower().startswith(b'SwapFree'):
-                    _, fre = line.split(b':', 1)
+                    _, yyy = line.split(b':', 1)
             #print ("HELLO FOR")
             #fields = line.split()
             #mems[fields[0]] = int(fields[1]) * 1024
