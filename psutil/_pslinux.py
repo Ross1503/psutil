@@ -499,9 +499,9 @@ def swap_memory():
         print ("HELLO WITH")
         for line in f:
             if line.lower().startswith(b'SwapTotal'):
-                    _, total = line.split(b':', 1)
+                    _, tot = line.split(b':', 1)
             if line.lower().startswith(b'SwapFree'):
-                    _, free = line.split(b':', 1)
+                    _, fre = line.split(b':', 1)
             #print ("HELLO FOR")
             #fields = line.split()
             #mems[fields[0]] = int(fields[1]) * 1024
@@ -511,13 +511,15 @@ def swap_memory():
     # https://github.com/giampaolo/psutil/issues/1015
     #try:
      #   print ("HELLO TRY")
-      #  total = mems[b'SwapTotal:']
-       # free = mems[b'SwapFree:']
+    #        total = mems[b'SwapTotal:']
+             #free = mems[b'SwapFree:']
     #except KeyError:
         #print ("HELLO EXCEPT")
         #_, _, _, _, total, free, unit_multiplier = cext.linux_sysinfo()
         #total *= unit_multiplier
         #free *= unit_multiplier
+    total = tot
+    free = fre
     print ("\n PSLINUX TOTAL====", total)
     print ("\n PSLINUX FREE====", free)
     used = total - free
