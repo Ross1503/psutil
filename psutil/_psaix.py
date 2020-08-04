@@ -113,6 +113,7 @@ def swap_memory():
     """Swap system memory as a (total, used, free, sin, sout) tuple."""
     total, free, sin, sout = cext.swap_mem()
     used = total - free
+    print ("\n SWAP_TOTAL_INTERNAL ======", total)
     percent = usage_percent(used, total, round_=1)
     return _common.sswap(total, used, free, percent, sin, sout)
 
