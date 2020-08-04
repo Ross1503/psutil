@@ -496,7 +496,9 @@ def swap_memory():
     """Return swap memory metrics."""
     mems = {}
     with open_binary('%s/meminfo' % get_procfs_path()) as f:
+        print ("HELLO WITH")
         for line in f:
+            print ("HELLO FOR")
             fields = line.split()
             mems[fields[0]] = int(fields[1]) * 1024
     # We prefer /proc/meminfo over sysinfo() syscall so that
