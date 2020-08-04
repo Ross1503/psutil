@@ -493,7 +493,8 @@ def virtual_memory():
 
 
 def swap_memory():
-    globle xxx,yyy
+    globle xxx
+    globle yyy
     """Return swap memory metrics."""
     #mems = {}
     with open_binary('%s/meminfo' % get_procfs_path()) as f:
