@@ -1036,6 +1036,7 @@ class TestSystemDiskPartitions(PsutilTestCase):
         # Test that ZFS partitions are returned.
         with open("/proc/filesystems", "r") as f:
             data = f.read()
+        print ("\n DATA ====", data)
         if 'zfs' in data:
             for part in psutil.disk_partitions():
                 print ("\n PART_FSTYPE ====", part.fstype)
