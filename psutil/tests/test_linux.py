@@ -334,6 +334,7 @@ class TestSystemVirtualMemory(PsutilTestCase):
             print ("\n VALUE OF B ====", b)
             print ("\n VALUE OF ABS (A-B) ====", abs(a - b))
             diff_percent = abs(a - b) / a * 100
+            print ("\n VALUE OF ABS DIFF_PER ====", diff_percent)
             self.assertLess(diff_percent, 15)
 
     def test_avail_old_comes_from_kernel(self):
