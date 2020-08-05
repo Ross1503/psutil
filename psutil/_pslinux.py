@@ -497,31 +497,32 @@ def swap_memory():
     """Return swap memory metrics."""
     mems = {}
     with open_binary('%s/meminfo' % get_procfs_path()) as f:
-        print ("HELLO WITH")
+        '''print ("HELLO WITH")
         for line in f:
             if line.lower().startswith(b'SwapTotal'):
                     _, xx = line.split(b':', 1)
             if line.lower().startswith(b'SwapFree'):
                     _, yy = line.split(b':', 1)
-            #print ("HELLO FOR")
-            #fields = line.split()
-            #mems[fields[0]] = int(fields[1]) * 1024
+            #print ("HELLO FOR")'''
+            fields = line.split()
+            mems[fields[0]] = int(fields[1]) * 1024
     # We prefer /proc/meminfo over sysinfo() syscall so that
     # psutil.PROCFS_PATH can be used in order to allow retrieval
     # for linux containers, see:
     # https://github.com/giampaolo/psutil/issues/1015
-    #try:
-     #   print ("HELLO TRY")
-    #        total = mems[b'SwapTotal:']
-             #free = mems[b'SwapFree:']
-    #except KeyError:
-        #print ("HELLO EXCEPT")
-        #_, _, _, _, total, free, unit_multiplier = cext.linux_sysinfo()
-        #total *= unit_multiplier
-        #free *= unit_multiplier
+    try:
+       #print ("HELLO TRY")
+            total = mems[b'SwapTotal:']
+            free = mems[b'SwapFree:']
+            print ("\n"total,"\n"free)
+    except KeyError:
+        print ("HELLO EXCEPT")
+        _, _, _, _, total, free, unit_multiplier = cext.linux_sysinfo()
+        total *= unit_multiplier
+        free *= unit_multiplier
     #print ("\n PSLINUX TOTAL====", total)
     #print ("\n PSLINUX FREE====", free)
-    used = xx - yy
+    used = total - free
     percent = usage_percent(used, xx, round_=1)
     # get pgin/pgouts
     try:
