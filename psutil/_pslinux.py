@@ -505,6 +505,8 @@ def swap_memory():
     try:
         total = mems[b'SwapTotal:']
         free = mems[b'SwapFree:']
+        print (total)
+        print (free)
     except KeyError:
         _, _, _, _, total, free, unit_multiplier = cext.linux_sysinfo()
         total *= unit_multiplier
