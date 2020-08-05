@@ -1159,7 +1159,7 @@ def disk_partitions(all=False):
                 fstype = line.split("\t")[1]
                 #print ("22222222222", fstype)
                 if fstype == "zfs":
-                    print ("1111111111", fstype)
+                    #print ("1111111111", fstype)
                     fstypes.add("zfs")
 
     # See: https://github.com/giampaolo/psutil/issues/1307
@@ -1172,7 +1172,7 @@ def disk_partitions(all=False):
     partitions = cext.disk_partitions(mounts_path)
     for partition in partitions:
         device, mountpoint, fstype, opts = partition
-        print (device, mountpoint, fstype, opts)
+        #print (device, mountpoint, fstype, opts)
         if device == 'none':
             device = ''
         if not all:
@@ -1180,7 +1180,7 @@ def disk_partitions(all=False):
                 continue
         ntuple = _common.sdiskpart(device, mountpoint, fstype, opts)
         retlist.append(ntuple)
-
+    ptint ("RET_LIST IS", retlist)
     return retlist
 
 
