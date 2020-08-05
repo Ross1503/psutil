@@ -495,13 +495,15 @@ def virtual_memory():
 def swap_memory():
     """Return swap memory metrics."""
     mems = {}
+    global xx
+    global yy
     with open_binary('%s/meminfo' % get_procfs_path()) as f:
         print ("HELLO WITH")
         for line in f:
             if line.lower().startswith(b'SwapTotal'):
-                    _, total = line.split(b':', 1)
+                    _, xx = line.split(b':', 1)
             if line.lower().startswith(b'SwapFree'):
-                    _, free = line.split(b':', 1)
+                    _, yy = line.split(b':', 1)
             #print ("HELLO FOR")
             #fields = line.split()
             #mems[fields[0]] = int(fields[1]) * 1024
@@ -520,8 +522,8 @@ def swap_memory():
         #free *= unit_multiplier
     #print ("\n PSLINUX TOTAL====", total)
     #print ("\n PSLINUX FREE====", free)
-    used = total - free
-    percent = usage_percent(used, total, round_=1)
+    used = xx - yy
+    percent = usage_percent(used, xx, round_=1)
     # get pgin/pgouts
     try:
         f = open_binary("%s/vmstat" % get_procfs_path())
@@ -551,7 +553,7 @@ def swap_memory():
                       "be determined and were set to 0"
                 warnings.warn(msg, RuntimeWarning)
                 sin = sout = 0
-    return _common.sswap(total, used, free, percent, sin, sout)
+    return _common.sswap(xx, used, yy, percent, sin, sout)
 
 
 # =====================================================================
