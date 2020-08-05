@@ -1042,10 +1042,11 @@ class TestSystemDiskPartitions(PsutilTestCase):
         # Test that ZFS partitions are returned.
         with open("/proc/filesystems", "r") as f:
             data = f.read()
-        printf ("\n DATA ====", data)
+        print (data)
         if 'zfs' in data:
             for part in psutil.disk_partitions():
-                printf ("\n PART_FSTYPE ====", part.fstype)
+                print ("11111111111111111")
+                print (part.fstype)
                 if part.fstype == 'zfs':
                     break
                 else:
