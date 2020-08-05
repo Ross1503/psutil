@@ -493,10 +493,8 @@ def virtual_memory():
 
 
 def swap_memory():
-    global total
-    global free
     """Return swap memory metrics."""
-    #mems = {}
+    mems = {}
     with open_binary('%s/meminfo' % get_procfs_path()) as f:
         print ("HELLO WITH")
         for line in f:
