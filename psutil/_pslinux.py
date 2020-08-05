@@ -518,7 +518,7 @@ def swap_memory():
 
     used = total - free
     #used = value - value1
-    percent = usage_percent(used, value, round_=1)
+    percent = usage_percent(used, total, round_=1)
     # get pgin/pgouts
     try:
         f = open_binary("%s/vmstat" % get_procfs_path())
@@ -548,7 +548,7 @@ def swap_memory():
                       "be determined and were set to 0"
                 warnings.warn(msg, RuntimeWarning)
                 sin = sout = 0
-    return _common.sswap(value, used, value1, percent, sin, sout)
+    return _common.sswap(total, used, free, percent, sin, sout)
 
 
 # =====================================================================
