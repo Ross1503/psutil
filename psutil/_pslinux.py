@@ -507,10 +507,10 @@ def swap_memory():
             fields = line.split()
             if line.startswith(b'SwapTotal'):
                     global total
-                    total = int(line.split(b':', 1)) * 1024
-            if line.startswith(b'Swapfree'):
+                    total = line.split(b':', 1)
+            if line.startswith(b'SwapFree'):
                     global free 
-                    free = int(line.split(b':', 1)) * 1024
+                    free = line.split(b':', 1)
             #mems[fields[0]] = int(fields[1])
     # We prefer /proc/meminfo over sysinfo() syscall so that
     # psutil.PROCFS_PATH can be used in order to allow retrieval
