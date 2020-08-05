@@ -520,8 +520,8 @@ def swap_memory():
         #_, _, _, _, total, free, unit_multiplier = cext.linux_sysinfo()
         #total *= unit_multiplier
         #free *= unit_multiplier
-    print ("\n PSLINUX TOTAL====", total)
-    print ("\n PSLINUX FREE====", free)
+    #print ("\n PSLINUX TOTAL====", total)
+    #print ("\n PSLINUX FREE====", free)
     used = total - free
     percent = usage_percent(used, total, round_=1)
     # get pgin/pgouts
