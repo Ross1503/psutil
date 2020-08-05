@@ -49,7 +49,8 @@ from ._compat import FileNotFoundError
 from ._compat import PermissionError
 from ._compat import ProcessLookupError
 from ._compat import PY3
-
+global xx
+global yy
 if sys.version_info >= (3, 4):
     import enum
 else:
@@ -495,8 +496,6 @@ def virtual_memory():
 def swap_memory():
     """Return swap memory metrics."""
     mems = {}
-    global xx
-    global yy
     with open_binary('%s/meminfo' % get_procfs_path()) as f:
         print ("HELLO WITH")
         for line in f:
