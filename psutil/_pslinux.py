@@ -495,6 +495,7 @@ def swap_memory():
     """Return swap memory metrics."""
     mems = {}
     with open_binary('%s/meminfo' % get_procfs_path()) as f:
+        print (f)
         for line in f:
             fields = line.split()
             print (mems[fields[0])
