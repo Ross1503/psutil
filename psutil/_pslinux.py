@@ -1152,13 +1152,14 @@ def disk_partitions(all=False):
         for line in f:
             line = line.strip()
             if not line.startswith("nodev"):
-                print ("1111111111", line)
+                #print ("1111111111", line)
                 fstypes.add(line.strip())
             else:
                 # ignore all lines starting with "nodev" except "nodev zfs"
                 fstype = line.split("\t")[1]
-                print ("22222222222", fstype)
+                #print ("22222222222", fstype)
                 if fstype == "zfs":
+                    print ("1111111111", fstype)
                     fstypes.add("zfs")
 
     # See: https://github.com/giampaolo/psutil/issues/1307
