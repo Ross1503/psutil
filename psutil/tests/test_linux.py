@@ -578,7 +578,7 @@ class TestSystemSwapMemory(PsutilTestCase):
         _, _, _, _, total, free, unit_multiplier = cext.linux_sysinfo()
         total *= unit_multiplier
         free *= unit_multiplier
-        #print ("\n TOTAL====", total)
+        print ("\n TOTAL====", total)
         print ("\n SWAP_TOTAL=====", swap.total)
         self.assertEqual(swap.total, total)
         self.assertAlmostEqual(swap.free, free, delta=TOLERANCE_SYS_MEM)
