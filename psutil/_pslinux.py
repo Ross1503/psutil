@@ -503,19 +503,25 @@ def swap_memory():
     with open_binary('%s/meminfo' % get_procfs_path()) as f:
         for line in f:
             fields = line.split()
-            mems[fields[0]] = int(fields[1])
+            if line.startswith(b'SwapTotal'):
+                    global total
+                    total = int(line.split(b' ')[1]) * 1024
+            if line.startswith(b'Swapfree'):
+                    global free 
+                    free = int(line.split(b' ')[1]) * 1024
+            #mems[fields[0]] = int(fields[1])
     # We prefer /proc/meminfo over sysinfo() syscall so that
     # psutil.PROCFS_PATH can be used in order to allow retrieval
     # for linux containers, see:
     # https://github.com/giampaolo/psutil/issues/1015
-    try:
+    '''try:
         total = mems[b'SwapTotal:']
         free = mems[b'SwapFree:']
     except KeyError:
         _, _, _, _, total, free, unit_multiplier = cext.linux_sysinfo()
         total *= unit_multiplier
         free *= unit_multiplier
-
+'''
     used = total - free
     #used = value - value1
     percent = usage_percent(used, total, round_=1)
