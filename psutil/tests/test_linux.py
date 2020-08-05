@@ -1043,9 +1043,9 @@ class TestSystemDiskPartitions(PsutilTestCase):
         with open("/proc/filesystems", "r") as f:
             data = f.read()
         #print (data)
-        if 'xyz' in data:
+        if 'zfs' in data:
             for part in psutil.disk_partitions():
-                print ("11111111111111111")
+                print (part)
                 if part.fstype == 'zfs':
                     break
                 else:
