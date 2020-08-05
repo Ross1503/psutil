@@ -49,8 +49,6 @@ from ._compat import FileNotFoundError
 from ._compat import PermissionError
 from ._compat import ProcessLookupError
 from ._compat import PY3
-global xx
-global yy
 if sys.version_info >= (3, 4):
     import enum
 else:
@@ -497,13 +495,13 @@ def swap_memory():
     """Return swap memory metrics."""
     mems = {}
     with open_binary('%s/meminfo' % get_procfs_path()) as f:
-        '''print ("HELLO WITH")
+            for line in f:
+                if line.lower().startswith(b'SwapTotal'):
+                    key, value = line.split(b':', 1)
+                if line.lower().startswith(b'SwapFree'):
+                    key1, value1 = line.split(b':', 1)
+    '''with open_binary('%s/meminfo' % get_procfs_path()) as f:
         for line in f:
-            if line.lower().startswith(b'SwapTotal'):
-                    _, xx = line.split(b':', 1)
-            if line.lower().startswith(b'SwapFree'):
-                    _, yy = line.split(b':', 1)
-            #print ("HELLO FOR")'''
             fields = line.split()
             mems[fields[0]] = int(fields[1]) * 1024
     # We prefer /proc/meminfo over sysinfo() syscall so that
@@ -511,19 +509,16 @@ def swap_memory():
     # for linux containers, see:
     # https://github.com/giampaolo/psutil/issues/1015
     try:
-       #print ("HELLO TRY")
-            total = mems[b'SwapTotal:']
-            free = mems[b'SwapFree:']
-            print ("\n"total,"\n"free)
+        total = mems[b'SwapTotal:']
+        free = mems[b'SwapFree:']
     except KeyError:
-        print ("HELLO EXCEPT")
         _, _, _, _, total, free, unit_multiplier = cext.linux_sysinfo()
         total *= unit_multiplier
         free *= unit_multiplier
-    #print ("\n PSLINUX TOTAL====", total)
-    #print ("\n PSLINUX FREE====", free)
-    used = total - free
-    percent = usage_percent(used, xx, round_=1)
+
+    used = total - free'''
+    used = value - value1
+    percent = usage_percent(used, value, round_=1)
     # get pgin/pgouts
     try:
         f = open_binary("%s/vmstat" % get_procfs_path())
@@ -553,7 +548,7 @@ def swap_memory():
                       "be determined and were set to 0"
                 warnings.warn(msg, RuntimeWarning)
                 sin = sout = 0
-    return _common.sswap(xx, used, yy, percent, sin, sout)
+    return _common.sswap(value, used, value1, percent, sin, sout)
 
 
 # =====================================================================
