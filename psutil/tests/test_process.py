@@ -623,7 +623,8 @@ class TestProcess(PsutilTestCase):
                 assert os.path.isabs(nt.path), nt.path
                 if POSIX:
                     try:
-                        print ("##################################")
+                        print ("##################################", os.path.exists(nt.path))
+                        print ("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$", nt.path)
                         assert os.path.exists(nt.path) or \
                             os.path.islink(nt.path), nt.path
                     except AssertionError:
