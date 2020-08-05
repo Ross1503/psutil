@@ -330,6 +330,9 @@ class TestSystemVirtualMemory(PsutilTestCase):
         a = calculate_avail_vmem(mems)
         if b'MemAvailable:' in mems:
             b = mems[b'MemAvailable:']
+            print ("\n VALUE OF A ====", a)
+            print ("\n VALUE OF B ====", b)
+            print ("\n VALUE OF ABS (A-B) ====", abs(a - b))
             diff_percent = abs(a - b) / a * 100
             self.assertLess(diff_percent, 15)
 
