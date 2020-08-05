@@ -367,7 +367,7 @@ def calculate_avail_vmem(mems):
     avail += pagecache
     avail += slab_reclaimable - min(slab_reclaimable / 2.0, watermark_low)
     ddd = int(avail)
-    print ("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", ddd)
+    #print ("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", ddd)
     return int(avail)
 
 
