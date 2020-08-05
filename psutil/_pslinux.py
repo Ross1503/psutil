@@ -498,8 +498,6 @@ def swap_memory():
         print (f)
         for line in f:
             fields = line.split()
-            print (mems[fields[0])
-            print (mems[fields[1])
             mems[fields[0]] = int(fields[1]) * 1024
     # We prefer /proc/meminfo over sysinfo() syscall so that
     # psutil.PROCFS_PATH can be used in order to allow retrieval
