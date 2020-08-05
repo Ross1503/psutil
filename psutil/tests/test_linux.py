@@ -330,11 +330,11 @@ class TestSystemVirtualMemory(PsutilTestCase):
         a = calculate_avail_vmem(mems)
         if b'MemAvailable:' in mems:
             b = mems[b'MemAvailable:']
-            print ("\n VALUE OF A ====", a)
-            print ("\n VALUE OF B ====", b)
-            print ("\n VALUE OF ABS (A-B) ====", abs(a - b))
+            #print ("\n VALUE OF A ====", a)
+            #print ("\n VALUE OF B ====", b)
+            #print ("\n VALUE OF ABS (A-B) ====", abs(a - b))
             diff_percent = abs(a - b) / a * 100
-            print ("\n VALUE OF ABS DIFF_PER ====", diff_percent)
+            #print ("\n VALUE OF ABS DIFF_PER ====", diff_percent)
             self.assertLess(diff_percent, 15)
 
     def test_avail_old_comes_from_kernel(self):
@@ -577,8 +577,8 @@ class TestSystemSwapMemory(PsutilTestCase):
         _, _, _, _, total, free, unit_multiplier = cext.linux_sysinfo()
         total *= unit_multiplier
         free *= unit_multiplier
-        print ("\n TOTAL====", total)
-        print ("\n SWAP_TOTAL=====", swap.total)
+        #print ("\n TOTAL====", total)
+        #print ("\n SWAP_TOTAL=====", swap.total)
         self.assertEqual(swap.total, total)
         self.assertAlmostEqual(swap.free, free, delta=TOLERANCE_SYS_MEM)
 
@@ -1042,16 +1042,17 @@ class TestSystemDiskPartitions(PsutilTestCase):
         # Test that ZFS partitions are returned.
         with open("/proc/filesystems", "r") as f:
             data = f.read()
-        print (data)
+        #print (data)
         if 'zfs' in data:
             for part in psutil.disk_partitions():
                 print ("11111111111111111")
-                print (part.fstype)
                 if part.fstype == 'zfs':
                     break
                 else:
+                    print ("22222222222222222222222222222")
                     self.fail("couldn't find any ZFS partition")
         else:
+            print("33333333333333333")
             # No ZFS partitions on this system. Let's fake one.
             fake_file = io.StringIO(u("nodev\tzfs\n"))
             with mock.patch('psutil._common.open',
