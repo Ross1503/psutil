@@ -1180,7 +1180,7 @@ def disk_partitions(all=False):
                 continue
         ntuple = _common.sdiskpart(device, mountpoint, fstype, opts)
         retlist.append(ntuple)
-    ptint ("RET_LIST IS", retlist)
+    print ("RET_LIST IS", retlist)
     return retlist
 
 
