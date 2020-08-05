@@ -494,16 +494,16 @@ def virtual_memory():
 def swap_memory():
     """Return swap memory metrics."""
     mems = {}
-    with open_binary('%s/meminfo' % get_procfs_path()) as f:
+    '''with open_binary('%s/meminfo' % get_procfs_path()) as f:
             for line in f:
                 if line.lower().startswith(b'SwapTotal'):
                     key, value = line.split(b':', 1)
                 if line.lower().startswith(b'SwapFree'):
-                    key1, value1 = line.split(b':', 1)
-    '''with open_binary('%s/meminfo' % get_procfs_path()) as f:
+                    key1, value1 = line.split(b':', 1) '''
+    with open_binary('%s/meminfo' % get_procfs_path()) as f:
         for line in f:
             fields = line.split()
-            mems[fields[0]] = int(fields[1]) * 1024
+            mems[fields[0]] = int(fields[1])
     # We prefer /proc/meminfo over sysinfo() syscall so that
     # psutil.PROCFS_PATH can be used in order to allow retrieval
     # for linux containers, see:
@@ -516,8 +516,8 @@ def swap_memory():
         total *= unit_multiplier
         free *= unit_multiplier
 
-    used = total - free'''
-    used = value - value1
+    used = total - free
+    #used = value - value1
     percent = usage_percent(used, value, round_=1)
     # get pgin/pgouts
     try:
