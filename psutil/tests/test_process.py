@@ -623,6 +623,7 @@ class TestProcess(PsutilTestCase):
                 assert os.path.isabs(nt.path), nt.path
                 if POSIX:
                     try:
+                        print ("##################################")
                         assert os.path.exists(nt.path) or \
                             os.path.islink(nt.path), nt.path
                     except AssertionError:
@@ -635,6 +636,7 @@ class TestProcess(PsutilTestCase):
                             if "%s (deleted)" % nt.path not in data:
                                 raise
                 else:
+                    print ("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
                     # XXX - On Windows we have this strange behavior with
                     # 64 bit dlls: they are visible via explorer but cannot
                     # be accessed via os.stat() (wtf?).
