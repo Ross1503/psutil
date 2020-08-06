@@ -1175,6 +1175,7 @@ def disk_partitions(all=False):
 
     retlist = []
     partitions = cext.disk_partitions(mounts_path)
+    print ("%%%%%%%%%%%%%%%%%%%%%%PARTITIONS", partitions)
     for partition in partitions:
         device, mountpoint, fstype, opts = partition
         print ("**********************", fstype)
