@@ -1046,12 +1046,11 @@ class TestSystemDiskPartitions(PsutilTestCase):
         #print (data)
         if 'zfs' in data:
             for part in psutil.disk_partitions():
-                print (part)
+                print ("!!!!!!!!!!!!!!!!!!!!!!!!!", part)
                 if part.fstype == 'zfs':
                     break
-                else:
-                    print ("22222222222222222222222222222")
-                    self.fail("couldn't find any ZFS partition")
+            print ("22222222222222222222222222222")
+            self.fail("couldn't find any ZFS partition")
         else:
             print("33333333333333333")
             # No ZFS partitions on this system. Let's fake one.
