@@ -1166,7 +1166,7 @@ def disk_partitions(all=False):
                 if fstype == "zfs":
                     #print ("1111111111", fstype)
                     fstypes.add("zfs")
-    print ("&&&&&&&&&&&&&&&&&&", fstype)
+    #print ("&&&&&&&&&&&&&&&&&&", fstype)
     # See: https://github.com/giampaolo/psutil/issues/1307
     if procfs_path == "/proc" and os.path.isfile('/etc/mtab'):
         mounts_path = os.path.realpath("/etc/mtab")
@@ -1177,7 +1177,7 @@ def disk_partitions(all=False):
     partitions = cext.disk_partitions(mounts_path)
     for partition in partitions:
         device, mountpoint, fstype, opts = partition
-        print ("**********************", fstype)
+        #print ("**********************", fstype)
         if device == 'none':
             device = ''
         if not all:
@@ -1185,7 +1185,7 @@ def disk_partitions(all=False):
                 continue
         ntuple = _common.sdiskpart(device, mountpoint, fstype, opts)
         retlist.append(ntuple)
-    #print ("RET_LIST IS", retlist)
+    print ("RET_LIST IS", retlist)
     return retlist
 
 
