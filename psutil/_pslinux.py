@@ -1156,20 +1156,20 @@ def disk_partitions(all=False):
     with open_text("%s/filesystems" % procfs_path) as f:
         for line in f:
             line = line.strip()
-            if line.startswith("nodev"):
+            if not line.startswith("nodev"):
+                fstypes.add(line.strip())
+            else:
                 # ignore all lines starting with "nodev" except "nodev zfs"
                 fstype = line.split("\t")[1]
-                #print ("22222222222", fstype)
                 if fstype == "zfs":
-                    fstypes.add("zfs")
-            else:
-                fstypes.add(line.strip())
-                
+                    fstypes.add("zfs")                
     print ("&&&&&&&&&&&&&&&&&&", fstypes)
     # See: https://github.com/giampaolo/psutil/issues/1307
     if procfs_path == "/proc" and os.path.isfile('/etc/mtab'):
+        print ("IFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
         mounts_path = os.path.realpath("/etc/mtab")
     else:
+        print ("ELSEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
         mounts_path = os.path.realpath("%s/self/mounts" % procfs_path)
 
     retlist = []
