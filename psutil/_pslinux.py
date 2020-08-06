@@ -1161,6 +1161,7 @@ def disk_partitions(all=False):
                 fstype = line.split("\t")[1]
                 #print ("22222222222", fstype)
                 if fstype == "zfs":
+                    fstypes.add("zfs")
             else:
                 fstypes.add(line.strip())
                 
