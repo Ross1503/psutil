@@ -1177,7 +1177,7 @@ def disk_partitions(all=False):
     partitions = cext.disk_partitions(mounts_path)
     for partition in partitions:
         device, mountpoint, fstype, opts = partition
-        #print ("**********************", fstype)
+        print ("**********************", fstype)
         if device == 'none':
             device = ''
         if not all:
