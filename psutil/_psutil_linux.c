@@ -270,6 +270,7 @@ psutil_linux_sysinfo(PyObject *self, PyObject *args) {
     if (sysinfo(&info) != 0)
         return PyErr_SetFromErrno(PyExc_OSError);
     // note: boot time might also be determined from here
+    print ("ccccccccccccccccccccccccccccccccccc")
     return Py_BuildValue(
         "(kkkkkkI)",
         info.totalram,  // total
