@@ -498,7 +498,7 @@ def swap_memory():
     mems = {}
     with open_binary('%s/meminfo' % get_procfs_path()) as f:
         for line in f:
-            print (line)
+            #print (line)
             fields = line.split()
             mems[fields[0]] = int(fields[1]) * 1024
     # We prefer /proc/meminfo over sysinfo() syscall so that
@@ -508,8 +508,8 @@ def swap_memory():
     try:
         total = mems[b'SwapTotal:']
         free = mems[b'SwapFree:']
-        print (total)
-        print (free)
+        #print (total)
+        #print (free)
     except KeyError:
         _, _, _, _, total, free, unit_multiplier = cext.linux_sysinfo()
         total *= unit_multiplier
