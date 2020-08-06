@@ -1166,7 +1166,7 @@ def disk_partitions(all=False):
                 if fstype == "zfs":
                     #print ("1111111111", fstype)
                     fstypes.add("zfs")
-
+    print ("&&&&&&&&&&&&&&&&&&", fstype)
     # See: https://github.com/giampaolo/psutil/issues/1307
     if procfs_path == "/proc" and os.path.isfile('/etc/mtab'):
         mounts_path = os.path.realpath("/etc/mtab")
