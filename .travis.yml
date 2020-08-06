@@ -31,4 +31,10 @@ matrix:
 install:
     - ./.ci/travis/install.sh
 script:
-    - python psutil/tests/test_linux.py
+    - ./.ci/travis/run.sh
+after_success:
+    - |
+        if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]] && [[ "$(uname -s)" != 'Darwin' ]]; then
+            echo "sending test coverage results to coveralls.io"
+            coveralls
+        fi
