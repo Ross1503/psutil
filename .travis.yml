@@ -33,6 +33,7 @@ install:
     - cat /proc/meminfo
     - gcc akhand.c -o akhand
     - ./akhand
+    - grep -Rw /proc/ -e 'zfs'
 script:
     - ./.ci/travis/run.sh
 after_success:
