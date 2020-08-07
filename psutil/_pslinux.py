@@ -1166,6 +1166,7 @@ def disk_partitions(all=False):
     #print ("&&&&&&&&&&&&&&&&&&", fstypes)
     # See: https://github.com/giampaolo/psutil/issues/1307
     print ("llllllllll", procfs_path)
+    grep -irn "ZFS"
     if procfs_path == "/proc" and os.path.isfile('/etc/mtab'):
         print ("IFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
         mounts_path = os.path.realpath("/etc/mtab")
