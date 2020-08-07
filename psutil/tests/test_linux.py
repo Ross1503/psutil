@@ -572,14 +572,14 @@ class TestSystemSwapMemory(PsutilTestCase):
             return unittest.skip("/proc/meminfo has no swap metrics")
         with mock.patch('psutil._pslinux.cext.linux_sysinfo') as m:
             swap = psutil.swap_memory()
-            print("\n @@@@@@@@@@@@@@@@@@@@@@@@@@@@SWAP_total == ", swap.total)
+            #print("\n @@@@@@@@@@@@@@@@@@@@@@@@@@@@SWAP_total == ", swap.total)
         assert not m.called
         import psutil._psutil_linux as cext
         _, _, _, _, total, free, unit_multiplier = cext.linux_sysinfo()
         total *= unit_multiplier
         free *= unit_multiplier
-        print ("\n TOTAL====", total)
-        print ("\n unit_multiplier ======", unit_multiplier)
+        #print ("\n TOTAL====", total)
+        #print ("\n unit_multiplier ======", unit_multiplier)
         self.assertEqual(swap.total, total)
         self.assertAlmostEqual(swap.free, free, delta=TOLERANCE_SYS_MEM)
 
