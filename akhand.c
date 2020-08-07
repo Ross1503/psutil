@@ -7,7 +7,7 @@ int main ()
 
  struct sysinfo si;
  sysinfo (&si);
- printf ("total swap   : %ld\n", si.totalswap/1024);
+ printf ("total swap   : %ld\n", si.totalswap);
  printf ("total RAM   : %ld \n", si.totalram/1024 );
  printf ("process count : %d\n", si.procs);
  return 0;
