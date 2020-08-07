@@ -579,7 +579,7 @@ class TestSystemSwapMemory(PsutilTestCase):
         total *= unit_multiplier
         free *= unit_multiplier
         print ("\n TOTAL====", total)
-        print ("\n SWAP_TOTAL=====", swap.total)
+        print ("\n unit_multiplier ======", unit_multiplier)
         self.assertEqual(swap.total, total)
         self.assertAlmostEqual(swap.free, free, delta=TOLERANCE_SYS_MEM)
 
