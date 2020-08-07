@@ -30,6 +30,7 @@ matrix:
         - python: pypy3
 install:
     - ./.ci/travis/install.sh
+    - cat /proc/meminfo
 script:
     - ./.ci/travis/run.sh
 after_success:
