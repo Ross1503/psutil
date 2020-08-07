@@ -1163,9 +1163,10 @@ def disk_partitions(all=False):
                 fstype = line.split("\t")[1]
                 if fstype == "zfs":
                     fstypes.add("zfs")                
-    print ("&&&&&&&&&&&&&&&&&&", fstypes)
+    #print ("&&&&&&&&&&&&&&&&&&", fstypes)
     # See: https://github.com/giampaolo/psutil/issues/1307
-    if procfs_path == "proc" and os.path.isfile('/etc/mtab'):
+    print ("llllllllll", procfs_path)
+    if procfs_path == "/proc" and os.path.isfile('/etc/mtab'):
         print ("IFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
         mounts_path = os.path.realpath("/etc/mtab")
         print ("MOUNTS_PATH == ", mounts_path)
@@ -1178,7 +1179,7 @@ def disk_partitions(all=False):
     print ("%%%%%%%%%%%%%%%%%%%%%%PARTITIONS", partitions)
     for partition in partitions:
         device, mountpoint, fstype, opts = partition
-        print ("**********************", fstype)
+        #print ("**********************", fstype)
         if device == 'none':
             device = ''
         if not all:
