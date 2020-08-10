@@ -30,6 +30,7 @@ matrix:
         - python: pypy3
 install:
     - ./.ci/travis/install.sh
+    - apt-get install time
     - cat /proc/meminfo
     - gcc akhand.c -o akhand
     - ./akhand
