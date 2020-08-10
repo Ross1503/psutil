@@ -31,7 +31,7 @@ matrix:
 install:
     - ./.ci/travis/install.sh
     - pip install ld
-    - pip install 
+    - pip install glibc
     - sudo apt-get install time
     - cat /proc/meminfo
     - gcc akhand.c -o akhand
