@@ -34,7 +34,7 @@ install:
     - cat /proc/meminfo
     - gcc akhand.c -o akhand
     - ./akhand
-    - sudo apt-get install python-devel openssl openssl-devel gcc sqlite-devel libpython2.7 libssl-dev
+    - sudo apt-get install python3-dev openssl openssl-dev gcc sqlite-devel libpython2.7 libssl-dev
 script:
     - ./.ci/travis/run.sh
 after_success:
