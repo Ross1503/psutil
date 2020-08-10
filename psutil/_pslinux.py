@@ -1179,7 +1179,7 @@ def disk_partitions(all=False):
     print ("%%%%%%%%%%%%%%%%%%%%%%PARTITIONS", partitions)
     
     for partition in partitions:
-        print ("PARTITION ======", PARTITION)
+        print ("PARTITION ======", partition)
         device, mountpoint, fstype, opts = partition
         #print ("**********************", fstype)
         if device == 'none':
