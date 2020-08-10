@@ -623,8 +623,8 @@ class TestProcess(PsutilTestCase):
                 assert os.path.isabs(nt.path), nt.path
                 if POSIX:
                     try:
-                        print ("##################################", os.path.exists(nt.path))
-                        print ("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$", nt.path)
+                        #print ("##################################", os.path.exists(nt.path))
+                        #print ("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$", nt.path)
                         assert os.path.exists(nt.path) or \
                             os.path.islink(nt.path), nt.path
                     except AssertionError:
@@ -637,7 +637,7 @@ class TestProcess(PsutilTestCase):
                             if "%s (deleted)" % nt.path not in data:
                                 raise
                 else:
-                    print ("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+                    #print ("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
                     # XXX - On Windows we have this strange behavior with
                     # 64 bit dlls: they are visible via explorer but cannot
                     # be accessed via os.stat() (wtf?).
@@ -667,6 +667,8 @@ class TestProcess(PsutilTestCase):
         with copyload_shared_lib() as path:
             def normpath(p):
                 return os.path.realpath(os.path.normcase(p))
+            print ("normpath(path) ====", normpath(path))
+            print ("libpaths  ===========", libpaths)
             libpaths = [normpath(x.path)
                         for x in p.memory_maps()]
             self.assertIn(normpath(path), libpaths)
