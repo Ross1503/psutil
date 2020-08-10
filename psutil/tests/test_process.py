@@ -664,13 +664,14 @@ class TestProcess(PsutilTestCase):
         # Make sure a newly loaded shared lib is listed.
         p = psutil.Process()
         print ("test_memory_maps_lists_lib  p === ", p)
+        print ("copyload_shared_lib() ====", copyload_shared_lib())
         with copyload_shared_lib() as path:
             def normpath(p):
                 return os.path.realpath(os.path.normcase(p))
             print ("normpath(path) ====", normpath(path))
-            print ("libpaths  ===========", libpaths)
             libpaths = [normpath(x.path)
                         for x in p.memory_maps()]
+            print ("libpaths  ===========", libpaths)
             self.assertIn(normpath(path), libpaths)
 
     def test_memory_percent(self):
