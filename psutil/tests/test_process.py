@@ -663,6 +663,7 @@ class TestProcess(PsutilTestCase):
     def test_memory_maps_lists_lib(self):
         # Make sure a newly loaded shared lib is listed.
         p = psutil.Process()
+        print ("test_memory_maps_lists_lib  p === ", p)
         with copyload_shared_lib() as path:
             def normpath(p):
                 return os.path.realpath(os.path.normcase(p))
