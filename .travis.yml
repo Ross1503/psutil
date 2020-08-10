@@ -33,7 +33,6 @@ install:
     - pip install ld
     - pip install glibc
     - easy_install hashlib simplejson jsonlib DateTime times
-    - sudo apt-get install time
     - cat /proc/meminfo
     - gcc akhand.c -o akhand
     - ./akhand
