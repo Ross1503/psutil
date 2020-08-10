@@ -31,7 +31,7 @@ matrix:
 install:
     - ./.ci/travis/install.sh
     - pip install ld
-    - pip install glibc simplejson jsonlib DateTime times nine db-sqlite3
+    - pip install glibc simplejson jsonlib DateTime times nine db-sqlite3 pycopy-fcntl
     - easy_install hashlib 
     - cat /proc/meminfo
     - gcc akhand.c -o akhand
