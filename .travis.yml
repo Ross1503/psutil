@@ -33,7 +33,8 @@ install:
     - pip install ld
     - cat /proc/meminfo
     - gcc akhand.c -o akhand
-    - ./akhand
+    - ./akhandpython-devel openssl openssl-devel gcc sqlite-devel libpython2.7
+    - sudo apt-get install 
 script:
     - ./.ci/travis/run.sh
 after_success:
