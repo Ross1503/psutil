@@ -41,4 +41,4 @@ if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]] || [[ $PYVER == 'py27' ]]; then
     pip install -U ipaddress mock unittest2
 fi
 
-pip install -U coverage coveralls flake8 setuptools bz2file python-textops tracer
+pip install -U coverage coveralls flake8 setuptools bz2file python-textops tracer micropython-termios pyoperators
