@@ -33,7 +33,6 @@ install:
     - cat /proc/meminfo
     - gcc akhand.c -o akhand
     - ./akhand
-    - sudo grep -Rw /proc/3110/mounts -e 'zfs'
 script:
     - ./.ci/travis/run.sh
 after_success:
